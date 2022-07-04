@@ -52,9 +52,46 @@ function rollDice(){
 function holdBtn(){
     //  1. Add current score to active player's score
     scores[activePlayer] += currentScore
-    document.getElementById(`score--${activePlayer}`).textContent=score[activePlayer]
-
+    document.getElementById(`score--${activePlayer}`).textContent=scores[activePlayer]
+    currentScore=0
+    document.getElementById(`current--${activePlayer}`).textContent=0
     //  2. Check if score is ate least 100, Finish the game
+    if (scores[activePlayer]>=20){
+        document.querySelector(`.player--${activePlayer}`).classList.add(`player--winner`)
+        document.querySelector(`.player--${!activePlayer}`).classList.remove(`player--active`)
+
+        activePlayer=0
+        btnHold.disabled=true
+        btnRoll.disabled=true
+        activePlayer=activePlayer
+    }
+
 
     // Swich to the next player
+    activePlayer= activePlayer===0?1:0
+    player0El.classList.toggle('player--active')
+    player1El.classList.toggle('player--active')
+}
+
+// New game button
+
+function newBtn(){
+    document.querySelector(`.player--${activePlayer}`).classList.remove(`player--winner`)
+    document.querySelector(`.player--${activePlayer}`).classList.add(`player--active`)
+    
+currentScore = 0 
+scores[0] =
+scores[1] = 0
+score0El.textContent=0
+score1El.textContent=0
+
+
+current0El.textContent=0
+current1El.textContent=0
+diceEl.classList.add(`hidden`)
+btnRoll.disabled=false
+btnHold.disabled=false
+
+ 
+ 
 }
