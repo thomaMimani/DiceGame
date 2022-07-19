@@ -56,7 +56,7 @@ function holdBtn(){
     currentScore=0
     document.getElementById(`current--${activePlayer}`).textContent=0
     //  2. Check if score is ate least 100, Finish the game
-    if (scores[activePlayer]>=20){
+    if (scores[activePlayer]>=100){
         document.querySelector(`.player--${activePlayer}`).classList.add(`player--winner`)
         document.querySelector(`.player--${!activePlayer}`).classList.remove(`player--active`)
 
